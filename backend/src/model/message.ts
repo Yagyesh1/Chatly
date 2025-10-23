@@ -1,6 +1,11 @@
-import mongoose from "mongoose";
-
-const messageSchema = new mongoose.Schema({
+import mongoose, {Document} from "mongoose";
+interface messagStructure extends Document{
+  senderId : mongoose.Schema.Types.ObjectId;
+  recieverId: mongoose.Schema.Types.ObjectId;
+  text?: string;
+  image?: string;
+}
+const messageSchema = new mongoose.Schema<messagStructure>({
    senderId : {
      type : mongoose.Schema.Types.ObjectId,
      ref : "User",
